@@ -1,7 +1,9 @@
- let currentResult = 0;
+const defaultResult = 0;
 
- currentResult = (currentResult + 10) * 3 / 2 - 1 ;
+let currentResult = defaultResult;
 
- let calculationDecription = '(' + currentResult + ' + 10) * 3 / 2 - 1'  
+currentResult = (currentResult + 10) * 3 / 2 - 1 ;
+
+ let calculationDecription =  `( ${defaultResult} + 10) * 3 / 2 - 1`;
 
  outputResult(currentResult, calculationDecription);
