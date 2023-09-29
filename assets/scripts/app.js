@@ -1,48 +1,54 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
+let logEntries = [];
 
 function getUserInput() {
-   return parseInt(userInput.value);
+  return parseInt(userInput.value);
 }
-function createAndWriteOutput(operator,resultBefotrCalc,calcNumber) {
-   const calcDescription = `${resultBefotrCalc} ${operator} ${calcNumber}`;
-   outputResult(currentResult,  calcDescription);
+function createAndWriteOutput(operator, resultBefotrCalc, calcNumber) {
+  const calcDescription = `${resultBefotrCalc} ${operator} ${calcNumber}`;
+  outputResult(currentResult, calcDescription);
 }
-function add ( ) {
-   const enteredNumber  = getUserInput();
-    const initialResult = currentResult
-   currentResult += enteredNumber;
-createAndWriteOutput('+',initialResult,enteredNumber)
+function add() {
+  const enteredNumber = getUserInput();
+  const initialResult = currentResult;
+  currentResult += enteredNumber;
+  createAndWriteOutput("+", initialResult, enteredNumber);
+  const logEntry = {
+    operation: "ADD",
+    prevResult: initialResult,
+    number: enteredNumber,
+    result: currentResult,
+  };
+  logEntries.push(logEntry);
+  console.log(logEntries );
 }
- 
 
 function subtract() {
-   const enteredNumber  = getUserInput();
-    const initialResult = currentResult
-   currentResult -= enteredNumber;
-createAndWriteOutput('-',initialResult,enteredNumber)
+  const enteredNumber = getUserInput();
+  const initialResult = currentResult;
+  currentResult -= enteredNumber;
+  createAndWriteOutput("-", initialResult, enteredNumber);
 }
-
 
 function multiply() {
-   const enteredNumber  = getUserInput();
-   const initialResult = currentResult
+  const enteredNumber = getUserInput();
+  const initialResult = currentResult;
   currentResult *= enteredNumber;
-createAndWriteOutput('*',initialResult,enteredNumber)
+  createAndWriteOutput("*", initialResult, enteredNumber);
 }
 
-function divide () {
-   const enteredNumber  = getUserInput();
-   const initialResult = currentResult
+function divide() {
+  const enteredNumber = getUserInput();
+  const initialResult = currentResult;
   currentResult /= enteredNumber;
-createAndWriteOutput('/',initialResult,enteredNumber)
+  createAndWriteOutput("/", initialResult, enteredNumber);
 }
-addBtn.addEventListener('click', add);
-subtractBtn.addEventListener('click', subtract);
-multiplyBtn.addEventListener('click', multiply);
-divideBtn.addEventListener('click',divide);
+addBtn.addEventListener("click", add);
+subtractBtn.addEventListener("click", subtract);
+multiplyBtn.addEventListener("click", multiply);
+divideBtn.addEventListener("click", divide);
 
- 
-//all the buttons work :) 
+//all the buttons work :)
 //the return keyword
 //
