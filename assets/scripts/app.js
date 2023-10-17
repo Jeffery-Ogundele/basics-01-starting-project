@@ -1,6 +1,7 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 let logEntries = [];
+ 
 
 function getUserInput() {
   return parseInt(userInput.value);
@@ -20,7 +21,7 @@ function writeToLog(
     operation: operationIdentifier,
     prevResult: prevResult,
     number: operationNumber,
-    result: newResult,
+    result: newResult 
   };
   logEntries.push(logEntry);
 
@@ -28,44 +29,52 @@ function writeToLog(
 }
 
 function calculationResult(calcType) {
-  // if (
-  //   calcType !== "ADD" && 
-  // calcType !== "SUBTRACT" &&
-  // calcType !== 'MULTIPLY' && 
-  // calcType !== "DIVIDE") {
-  //   return;
-  // }
-  //Both conditions would work
+   const enteredNumber = getUserInput();
+     
+    
   if (
-    calcType === 'ADD'||
-    calcType === 'SUBTRACT' ||
-    calcType === 'MULTIPLY' ||
-    calcType === 'DIVIDE'  
+    calcType !== "ADD" && 
+  calcType !== "SUBTRACT" &&
+  calcType !== 'MULTIPLY' && 
+  calcType !== "DIVIDE" ||
+  !enteredNumber) {
+    return;
+  }
+  //Both conditions would work
+ 
+  // if (
+  //   calcType === 'ADD'||
+  //   calcType === 'SUBTRACT' ||
+  //   calcType === 'MULTIPLY' ||
+  //   calcType === 'DIVIDE'  
 
-  ){
-    const enteredNumber = getUserInput();
+  // ){
+ 
     const initialResult = currentResult;
-    let mathOperaror;
+    let mathOperator;
+   
     if (calcType === "ADD") {
       currentResult += enteredNumber;
-      mathOperaror = "+";
+      mathOperator = "+";
     } else if (calcType === "SUBTRACT") {
       currentResult -= enteredNumber;
-      mathOperaror = "-";
+      mathOperator = "-";
     } else if (calcType === "MULTIPLY") {
       currentResult *= enteredNumber;
-      mathOperaror = "*";
-    } else calcType === "DIVIDE";
+      mathOperator = "*";
+    } else if (calcType === "DIVIDE") 
     {
       currentResult /= enteredNumber;
-      mathOperaror = "/";
+      mathOperator = "/";
     }
+    createAndWriteOutput(mathOperator, initialResult, enteredNumber);
+  writeToLog(calcType, initialResult, enteredNumber, currentResult);  
   }
    
+   
 
-  createAndWriteOutput(mathOperaror, initialResult, enteredNumber);
-  writeToLog(calcType, initialResult, enteredNumber, currentResult);
-}
+ 
+ 
 
 function add() {
   calculationResult("ADD");
